@@ -25,11 +25,11 @@ import * as yup from "yup";
 // Validación del formulario con Yup
 const validationSchema = yup.object({
   email: yup
-    .string("Introduce tu correo electrónico")
+    .string()
     .email("Introduzca un correo electrónico válido")
     .required("Campo requerido"),
   password: yup
-    .string("Ingresa tu contraseña")
+    .string()
     .min(8, "Password should be of minimum 8 characters length")
     .required("Campo requerido"),
 });

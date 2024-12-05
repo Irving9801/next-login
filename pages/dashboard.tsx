@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 
 const Dashboard = ({ data }: { data: any }) => {
   if (!data) {
-    return <div style={styles.loading}>Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -12,7 +12,7 @@ const Dashboard = ({ data }: { data: any }) => {
       <h1 style={styles.title}>Welcome to the Dashboard</h1>
       <p style={styles.description}>This is a protected page.</p>
       <h2 style={styles.subtitle}>User List</h2>
-      <pre style={styles.pre}>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };
@@ -95,9 +95,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   //   };
   // }
   try {
-    const res = await fetch('http://localhost:3000/api/dashboard');
+    const res = await fetch("http://localhost:3000/api/dashboard");
     if (!res.ok) {
-      throw new Error('Failed to fetch data from the API Route');
+      throw new Error("Failed to fetch data from the API Route");
     }
 
     const data = await res.json();
@@ -106,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: { data },
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     return {
       props: { data: null },
     };
